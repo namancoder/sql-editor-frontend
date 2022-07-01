@@ -4,8 +4,8 @@
       api-key="qg5ambzh5ftcnsgbbgsh4n8p2ofgm7okas68ohoxz3jfgn4n"
       :init="tinyMceConfig"
       v-model="codeContent"
-      v-on:onEditorChange="this.update"
       outputFormat="html"
+      v-on:onEditorChange="this.update"
       v-on:onKeyUp="this.update"
       v-on:onRedo="this.update"
       v-on:onUndo="this.update"
@@ -28,21 +28,6 @@ export default {
   },
   created() {
     this.init();
-    // this.$papa.parse(
-    //   "https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/csv/territories.csv",
-    //   {
-    //     //header: ["territoryID", "territoryDescription", "regionID"],
-    //     header: true,
-    //     download: true,
-    //     skipEmptyLines: true,
-    //     complete: async function (results) {
-    //       console.log(results);
-    //     },
-    //     // error: function (err) {
-    //     //   console.log(err);
-    //     // },
-    //   }
-    // );
   },
   data() {
     return {
@@ -54,20 +39,32 @@ export default {
     // },
   },
   computed: {
-    codeContent() {
-      return this.query;
+    codeContent: {
+      get() {
+        return this.query;
+      },
+      set(val) {
+        this.$store.commit("writtenQuery",val);
+        console.log("codeConten", val);
+      },
     },
   },
   methods: {
     init() {
       this.tinyMceConfig = {
-        plugins: "lists link image table code help wordcount",
         menubar: false,
-        toolbar: "forecolor backcolor",
-        width: "1350",
-        theme_advanced_text_colors: "FF00FF,FFFF00,000000",
+        statusbar: false,
+        toolbar: "undo redo",
+        width: 1350,
+        plugins: "lists link image table code help wordcount ",
         initialValue: this.codeContent,
       };
+    },
+    getEditorWidth() {
+      let w = parseInt(this.$store.state.screenWidth);
+      let v = w.toString();
+      console.log("v", v);
+      return v;
     },
     update: function (event, editor) {
       console.log("content, ");
@@ -76,11 +73,12 @@ export default {
       let content = editor.getContent();
       //let content = editor.getContent().replace(/<\/?p[^>]*>/g, "");
       let content1 = content.replace("select", "dog");
+      this.codeContent = content1;
       // .replace(/&nbsp;/g, "")
       // .replace(/<br\s*\/?>/g, "");
       //this.content = content1;
       //editor.setContent(content1);
-      editor.setContent(content1);
+      //editor.setContent(content1);
       console.log("content, ", content1);
     },
   },

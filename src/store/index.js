@@ -6,10 +6,16 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    count: 0,
+    screenWidth: 0,
     headers: [],
     items: [],
-    queries: ["select * from territories", "Hello", "Hey There!"],
+    filteredItems: [],
+    writtenQuery: "",
+    queries: [
+      "SELECT  * FROM  territories",
+      "SELECT  * FROM  territories WHERE regionId=3",
+      "SELECT  * FROM  territories WHERE regionId=4",
+    ],
   },
   getters: {
     counter(state) {
@@ -24,6 +30,25 @@ export const store = new Vuex.Store({
     addItems(state, val) {
       console.log("addItems", val);
       state.items = val;
+    },
+    getScreenWidth(state, val) {
+      state.screenWidth = val;
+    },
+    addQuery(state, val) {
+      if (val == 1)
+        state.filteredItems = state.items.filter(function (item) {
+          return item.regionID == 3;
+        });
+      else if (val == 0) {
+        state.filteredItems = state.items;
+      } else if (val == 2) {
+        state.filteredItems = state.items.filter(function (item) {
+          return item.regionID == 4;
+        });
+      } else state.filteredItems = state.items;
+    },
+    writtenQuery(state, val) {
+      state.writtenQuery = val;
     },
   },
   actions: {
@@ -67,18 +92,3 @@ export const store = new Vuex.Store({
     },
   },
 });
-// export default new Vuex.Store({
-//     state: {
-//         n: 0
-//     },
-//     mutations: {
-//         change_n(state) {
-//             state.n++
-//         },
-//     },
-//     actions: {
-//         change_n(context) {
-//             context.commit('change_n')
-//         }
-//     }
-// })
