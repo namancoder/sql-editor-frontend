@@ -1,5 +1,12 @@
 # sql-editor
 
+## Packages Used
+```
+TinyMCE
+Papaparse
+Vuetify
+Vuex
+```
 ## Project setup
 ```
 npm install
