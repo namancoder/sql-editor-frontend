@@ -2,10 +2,10 @@
 
 ## Packages Used
 ```
-TinyMCE
-Papaparse
-Vuetify
-Vuex
+TinyMCE - used the code editor for writing the SQL queries.
+Papaparse - for parsing the CSV file.
+Vuetify - for creating the UI components
+Vuex - for managing the state of the application
 ```
 ## Project setup
 ```
