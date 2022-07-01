@@ -54,6 +54,7 @@ export default {
       this.tinyMceConfig = {
         menubar: false,
         statusbar: false,
+        placeholder: "Write your Query here...",
         toolbar: "undo redo",
         width: 1350,
         plugins: "lists link image table code help wordcount ",

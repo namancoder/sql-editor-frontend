@@ -67,7 +67,7 @@ export const store = new Vuex.Store({
             let heads = [];
             heads = [
               {
-                text: headerArray[0].toUpperCase(),
+                text: headerArray[0],
                 value: headerArray[0],
                 align: "start",
                 sortable: true,
@@ -75,7 +75,7 @@ export const store = new Vuex.Store({
             ];
             for (let i = 1; i < headerArray.length; i++) {
               heads.push({
-                text: headerArray[i].toUpperCase(),
+                text: headerArray[i],
                 value: headerArray[i],
                 align: "start",
                 sortable: true,

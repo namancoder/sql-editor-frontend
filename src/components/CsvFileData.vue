@@ -1,11 +1,11 @@
 <template>
   <div>
-    <v-dialog v-model="dialogOpen" persistent>
+    <v-dialog v-model="dialogOpen">
       <v-card>
         <v-card-title>
           <v-row>
             <v-col>
-              <v-btn @click="closeDialog()" text color="primary">Close</v-btn>
+              <v-btn @click="closeDialog()" large color="primary">Close</v-btn>
             </v-col>
           </v-row>
         </v-card-title>
@@ -52,20 +52,7 @@ export default {
       console.log("close dialog");
       this.$emit("close-dialog");
     },
-    // createHeaders() {
-    //   //let headerArray = [];
-    //   for (let i = 0; i < this.headerArray.length; i++) {
-    //     let temp = {
-    //       text: this.headerArray[i].toUpperCase(),
-    //       value: this.headerArray[i],
-    //       align: "start",
-    //     };
-    //     this.headers.push(temp);
-    //   }
-    //   //this.headers =
-    //   console.log(this.headers);
-    //   //return headerArray;
-    // },
+
     parseCSV() {
       this.$papa.parse(
         "https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/csv/territories.csv",

@@ -14,7 +14,7 @@
       <v-row class="ma-2">
         <span class="ml-2 mt-2 font-italic">territories.csv</span>
         <v-btn class="ml-2" @click="viewTable = true" rounded color="primary"
-          >View Table</v-btn
+          >View Original Table</v-btn
         >
       </v-row>
       <v-row class="pl-2">
